@@ -40,14 +40,14 @@ function UpdateActions({ permissions, alertManagerName, receiverName, onClickDel
             `/alerting/notifications/receivers/${encodeURIComponent(receiverName)}/edit`,
             alertManagerName
           )}
-          tooltip="Edit contact point"
+          tooltip="编辑"
           icon="pen"
         />
       </Authorize>
       <Authorize actions={[permissions.delete]}>
         <ActionIcon
           onClick={() => onClickDeleteReceiver(receiverName)}
-          tooltip="Delete contact point"
+          tooltip='删除'
           icon="trash-alt"
         />
       </Authorize>
@@ -71,7 +71,7 @@ function ViewAction({ permissions, alertManagerName, receiverName }: ActionProps
       <ActionIcon
         data-testid="view"
         to={makeAMLink(`/alerting/notifications/receivers/${encodeURIComponent(receiverName)}/edit`, alertManagerName)}
-        tooltip="View contact point"
+        tooltip="查看"
         icon="file-alt"
       />
     </Authorize>
@@ -95,7 +95,7 @@ interface NotifierHealthProps {
 
 function NotifierHealth({ errorsByNotifier, errorDetail, lastNotify }: NotifierHealthProps) {
   const noErrorsColor = isLastNotifyNullDate(lastNotify) ? 'orange' : 'green';
-  const noErrorsText = isLastNotifyNullDate(lastNotify) ? 'No attempts' : 'OK';
+  const noErrorsText = isLastNotifyNullDate(lastNotify) ? '没有尝试' : 'OK';
   return errorsByNotifier > 0 ? (
     <ReceiverError errorCount={errorsByNotifier} errorDetail={errorDetail} showErrorCount={false} />
   ) : (
@@ -171,7 +171,7 @@ function NotifiersTable({ notifiersState }: NotifiersTableProps) {
     return [
       {
         id: 'health',
-        label: 'Health',
+        label: '健康',
         renderCell: ({ data: { lastError, lastNotify } }) => {
           return (
             <NotifierHealth
@@ -185,19 +185,19 @@ function NotifiersTable({ notifiersState }: NotifiersTableProps) {
       },
       {
         id: 'name',
-        label: 'Name',
+        label: '名称',
         renderCell: ({ data: { type }, id }) => <>{`${type}[${id}]`}</>,
         size: 1,
       },
       {
         id: 'lastNotify',
-        label: 'Last delivery attempt',
+        label: '最后一次交货尝试',
         renderCell: ({ data: { lastNotify } }) => <LastNotify lastNotifyDate={lastNotify} />,
         size: 3,
       },
       {
         id: 'lastNotifyDuration',
-        label: 'Last duration',
+        label: '最后的时间',
         renderCell: ({ data: { lastNotify, lastNotifyDuration } }) => (
           <>{isLastNotifyNullDate(lastNotify) && durationIsNull(lastNotifyDuration) ? '-' : lastNotifyDuration}</>
         ),
@@ -205,7 +205,7 @@ function NotifiersTable({ notifiersState }: NotifiersTableProps) {
       },
       {
         id: 'sendResolved',
-        label: 'Send resolved',
+        label: '发送解决',
         renderCell: ({ data: { sendResolved } }) => <>{String(Boolean(sendResolved))}</>,
         size: 1,
       },
@@ -293,10 +293,10 @@ export const ReceiversTable: FC<Props> = ({ config, alertManagerName }) => {
   return (
     <ReceiversSection
       className={styles.section}
-      title="Contact points"
-      description="Define where the notifications will be sent to, for example email or Slack."
+      title="联络点"
+      description="定义通知将发送到哪里，例如电子邮件或Slack。"
       showButton={!isVanillaAM && contextSrv.hasPermission(permissions.create)}
-      addButtonLabel="New contact point"
+      addButtonLabel="新建联络点"
       addButtonTo={makeAMLink('/alerting/notifications/receivers/new', alertManagerName)}
     >
       <DynamicTable
@@ -314,16 +314,15 @@ export const ReceiversTable: FC<Props> = ({ config, alertManagerName }) => {
       {!!showCannotDeleteReceiverModal && (
         <Modal
           isOpen={true}
-          title="Cannot delete contact point"
+          title="无法删除联络点"
           onDismiss={() => setShowCannotDeleteReceiverModal(false)}
         >
           <p>
-            Contact point cannot be deleted because it is used in more policies. Please update or delete these policies
-            first.
+          联络点被更多策略使用，不能删除。请更新或删除这些策略第一。
           </p>
           <Modal.ButtonRow>
             <Button variant="secondary" onClick={() => setShowCannotDeleteReceiverModal(false)} fill="outline">
-              Close
+              关闭
             </Button>
           </Modal.ButtonRow>
         </Modal>
@@ -331,9 +330,9 @@ export const ReceiversTable: FC<Props> = ({ config, alertManagerName }) => {
       {!!receiverToDelete && (
         <ConfirmModal
           isOpen={true}
-          title="Delete contact point"
-          body={`Are you sure you want to delete contact point "${receiverToDelete}"?`}
-          confirmText="Yes, delete"
+          title="删除联络点"
+          body={`确定要删除联络点吗 "${receiverToDelete}"?`}
+          confirmText="是的，删除"
           onConfirm={deleteReceiver}
           onDismiss={() => setReceiverToDelete(undefined)}
         />
@@ -368,7 +367,7 @@ function useGetColumns(
   const baseColumns: RowTableColumnProps[] = [
     {
       id: 'name',
-      label: 'Contact point name',
+      label: '联络点名称',
       renderCell: ({ data: { name, provisioned } }) => (
         <>
           {name} {provisioned && <ProvisioningBadge />}
@@ -378,14 +377,14 @@ function useGetColumns(
     },
     {
       id: 'type',
-      label: 'Type',
+      label: '类型',
       renderCell: ({ data: { types } }) => <>{types.join(', ')}</>,
       size: 1,
     },
   ];
   const healthColumn: RowTableColumnProps = {
     id: 'health',
-    label: 'Health',
+    label: '健康',
     renderCell: ({ data: { name } }) => {
       return (
         contactPointsState && (
@@ -404,7 +403,7 @@ function useGetColumns(
     ...(errorStateAvailable ? [healthColumn] : []),
     {
       id: 'actions',
-      label: 'Actions',
+      label: '操作',
       renderCell: ({ data: { provisioned, name } }) => (
         <Authorize actions={[permissions.update, permissions.delete]}>
           <div className={tableStyles.actionsCell}>

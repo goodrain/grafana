@@ -49,9 +49,9 @@ export const TemplatesTable: FC<Props> = ({ config, alertManagerName }) => {
 
   return (
     <ReceiversSection
-      title="Message templates"
-      description="Templates construct the messages that get sent to the contact points."
-      addButtonLabel="New template"
+      title="消息模板"
+      description="模板构造发送到联系点的消息。"
+      addButtonLabel="新模板"
       addButtonTo={makeAMLink('/alerting/notifications/templates/new', alertManagerName)}
       showButton={contextSrv.hasPermission(permissions.create)}
     >
@@ -64,16 +64,16 @@ export const TemplatesTable: FC<Props> = ({ config, alertManagerName }) => {
         <thead>
           <tr>
             <th></th>
-            <th>Template</th>
+            <th>模版</th>
             <Authorize actions={[permissions.update, permissions.delete]}>
-              <th>Actions</th>
+              <th>行动</th>
             </Authorize>
           </tr>
         </thead>
         <tbody>
           {!templateRows.length && (
             <tr className={tableStyles.evenRow}>
-              <td colSpan={3}>No templates defined.</td>
+              <td colSpan={3}>没有定义模板。</td>
             </tr>
           )}
           {templateRows.map(({ name, template, provenance }, idx) => {
@@ -153,8 +153,8 @@ export const TemplatesTable: FC<Props> = ({ config, alertManagerName }) => {
       {!!templateToDelete && (
         <ConfirmModal
           isOpen={true}
-          title="Delete template"
-          body={`Are you sure you want to delete template "${templateToDelete}"?`}
+          title="删除模版"
+          body={`您确定要删除模板吗 "${templateToDelete}"?`}
           confirmText="Yes, delete"
           onConfirm={deleteTemplate}
           onDismiss={() => setTemplateToDelete(undefined)}

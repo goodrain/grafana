@@ -32,19 +32,19 @@ export const AlertManagerPicker: FC<Props> = ({ onChange, current, dataSources, 
   return (
     <Field
       className={styles.field}
-      label={disabled ? 'Alertmanager' : 'Choose Alertmanager'}
+      label={disabled ? '报警管理程序' : '选择报警管理程序'}
       disabled={disabled || options.length === 1}
       data-testid="alertmanager-picker"
     >
       <Select
-        aria-label={disabled ? 'Alertmanager' : 'Choose Alertmanager'}
+        aria-label={disabled ? '报警管理程序' : '选择报警管理程序'}
         width={29}
         className="ds-picker select-container"
         backspaceRemovesValue={false}
         onChange={(value) => value.value && onChange(value.value)}
         options={options}
         maxMenuHeight={500}
-        noOptionsMessage="No datasources found"
+        noOptionsMessage="没有找到数据源"
         value={current}
         getOptionLabel={(o) => o.label}
       />
