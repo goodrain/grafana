@@ -40,19 +40,18 @@ export const AmRootRoute: FC<AmRootRouteProps> = ({
     <div className={styles.container} data-testid="am-root-route-container">
       <div className={styles.titleContainer}>
         <h5 className={styles.title}>
-          Root policy - <i>default for all alerts</i>
+        根的政策 - <i>默认为所有警报</i>
         </h5>
         {!isEditMode && !readOnly && (
           <Authorize actions={[permissions.update]}>
             <Button icon="pen" onClick={onEnterEditMode} size="sm" type="button" variant="secondary">
-              Edit
+              编辑
             </Button>
           </Authorize>
         )}
       </div>
       <p>
-        All alerts will go to the default contact point, unless you set additional matchers in the specific routing
-        area.
+        所有警报都将转到默认的联系点，除非您在特定的路由中设置了额外的匹配器区域。
       </p>
       {isEditMode ? (
         <AmRootRouteForm

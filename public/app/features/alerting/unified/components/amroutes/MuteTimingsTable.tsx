@@ -64,11 +64,10 @@ export const MuteTimingsTable: FC<Props> = ({ alertManagerSourceName, muteTiming
 
   return (
     <div className={styles.container}>
-      {!hideActions && <h5>Mute timings</h5>}
+      {!hideActions && <h5>沉默时间</h5>}
       {!hideActions && (
         <p>
-          Mute timings are a named interval of time that may be referenced in the notification policy tree to mute
-          particular notification policies for specific times of the day.
+          静音时间是一个指定的时间间隔，可以在通知策略树中引用，以便在一天中的特定时间静音特定的通知策略。
         </p>
       )}
       {!hideActions && items.length > 0 && (
@@ -79,7 +78,7 @@ export const MuteTimingsTable: FC<Props> = ({ alertManagerSourceName, muteTiming
             variant="primary"
             href={makeAMLink('alerting/routes/mute-timing/new', alertManagerSourceName)}
           >
-            New mute timing
+            新静音计时
           </LinkButton>
         </Authorize>
       )}
@@ -87,21 +86,21 @@ export const MuteTimingsTable: FC<Props> = ({ alertManagerSourceName, muteTiming
         <DynamicTable items={items} cols={columns} />
       ) : !hideActions ? (
         <EmptyAreaWithCTA
-          text="You haven't created any mute timings yet"
-          buttonLabel="Add mute timing"
+          text="您还没有创建任何静音计时"
+          buttonLabel="添加静音计时"
           buttonIcon="plus"
           buttonSize="lg"
           href={makeAMLink('alerting/routes/mute-timing/new', alertManagerSourceName)}
           showButton={contextSrv.hasPermission(permissions.create)}
         />
       ) : (
-        <p>No mute timings configured</p>
+        <p>没有配置静音计时</p>
       )}
       {!hideActions && (
         <ConfirmModal
           isOpen={!!muteTimingName}
-          title="Delete mute timing"
-          body={`Are you sure you would like to delete "${muteTimingName}"`}
+          title="删除静音计时"
+          body={`您确定要删除 "${muteTimingName}"吗`}
           confirmText="Delete"
           onConfirm={() => dispatch(deleteMuteTimingAction(alertManagerSourceName, muteTimingName))}
           onDismiss={() => setMuteTimingName('')}

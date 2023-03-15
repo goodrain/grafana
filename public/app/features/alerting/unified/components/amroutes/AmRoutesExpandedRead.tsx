@@ -80,7 +80,7 @@ export const AmRoutesExpandedRead: FC<AmRoutesExpandedReadProps> = ({
             alertManagerSourceName={alertManagerSourceName}
           />
         ) : (
-          <p>No nested policies configured.</p>
+          <p>没有配置嵌套策略</p>
         )}
         {!isAddMode && !readOnly && (
           <Authorize actions={[permissions.create]}>
@@ -94,12 +94,12 @@ export const AmRoutesExpandedRead: FC<AmRoutesExpandedReadProps> = ({
               variant="secondary"
               type="button"
             >
-              Add nested policy
+              添加嵌套策略
             </Button>
           </Authorize>
         )}
       </div>
-      <div className={gridStyles.titleCell}>Mute timings</div>
+      <div className={gridStyles.titleCell}>沉默时间</div>
       <div className={gridStyles.valueCell}>
         <MuteTimingsTable
           alertManagerSourceName={alertManagerSourceName!}

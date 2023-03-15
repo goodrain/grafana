@@ -50,11 +50,11 @@ export const SilencesFilter = () => {
         label={
           <Label>
             <Stack gap={0.5}>
-              <span>Search by matchers</span>
+              <span>按匹配器搜索</span>
               <Tooltip
                 content={
                   <div>
-                    Filter silences by matchers using a comma separated list of matchers, ie:
+                    使用逗号分隔的匹配器列表过滤匹配器的沉默:
                     <pre>{`severity=critical, instance=~cluster-us-.+`}</pre>
                   </div>
                 }
@@ -65,7 +65,7 @@ export const SilencesFilter = () => {
           </Label>
         }
         invalid={inputInvalid}
-        error={inputInvalid ? 'Query must use valid matcher syntax' : null}
+        error={inputInvalid ? '查询必须使用有效的匹配器语法' : null}
       >
         <Input
           key={queryStringKey}
@@ -73,17 +73,17 @@ export const SilencesFilter = () => {
           prefix={<Icon name="search" />}
           onChange={handleQueryStringChange}
           defaultValue={queryString ?? ''}
-          placeholder="Search"
+          placeholder="搜索"
           data-testid="search-query-input"
         />
       </Field>
-      <Field className={styles.rowChild} label="State">
+      <Field className={styles.rowChild} label="状态">
         <RadioButtonGroup options={stateOptions} value={silenceState} onChange={handleSilenceStateChange} />
       </Field>
       {(queryString || silenceState) && (
         <div className={styles.rowChild}>
           <Button variant="secondary" icon="times" onClick={clearFilters}>
-            Clear filters
+            清晰的过滤器
           </Button>
         </div>
       )}
