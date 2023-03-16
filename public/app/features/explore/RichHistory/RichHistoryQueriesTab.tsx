@@ -173,7 +173,7 @@ export function RichHistoryQueriesTab(props: Props) {
     <div className={styles.container}>
       <div className={styles.containerSlider}>
         <div className={styles.fixedSlider}>
-          <div className={styles.labelSlider}>Filter history</div>
+          <div className={styles.labelSlider}>过滤历史</div>
           <div className={styles.labelSlider}>{mapNumbertoTimeInSlider(richHistorySearchFilters.from)}</div>
           <div className={styles.slider}>
             <RangeSlider
@@ -202,8 +202,8 @@ export function RichHistoryQueriesTab(props: Props) {
                 return { value: ds.name, label: ds.name };
               })}
               value={richHistorySearchFilters.datasourceFilters}
-              placeholder="Filter queries for data sources(s)"
-              aria-label="Filter queries for data sources(s)"
+              placeholder="筛选数据源的查询"
+              aria-label="筛选数据源的查询"
               onChange={(options: SelectableValue[]) => {
                 updateFilters({ datasourceFilters: options.map((option) => option.value) });
               }}
@@ -211,7 +211,7 @@ export function RichHistoryQueriesTab(props: Props) {
           )}
           <div className={styles.filterInput}>
             <FilterInput
-              placeholder="Search queries"
+              placeholder="搜索查询"
               value={richHistorySearchFilters.search}
               onChange={(search: string) => updateFilters({ search })}
             />
@@ -220,13 +220,13 @@ export function RichHistoryQueriesTab(props: Props) {
             <Select
               value={sortOrderOptions.filter((order) => order.value === richHistorySearchFilters.sortOrder)}
               options={sortOrderOptions}
-              placeholder="Sort queries by"
+              placeholder="对查询进行排序"
               onChange={(e: SelectableValue<SortOrder>) => updateFilters({ sortOrder: e.value })}
             />
           </div>
         </div>
 
-        {loading && <span>Loading results...</span>}
+        {loading && <span>加载结果...</span>}
 
         {!loading &&
           Object.keys(mappedQueriesToHeadings).map((heading) => {
@@ -236,7 +236,7 @@ export function RichHistoryQueriesTab(props: Props) {
                   {heading}{' '}
                   <span className={styles.queries}>
                     {partialResults ? 'Displaying ' : ''}
-                    {mappedQueriesToHeadings[heading].length} queries
+                    {mappedQueriesToHeadings[heading].length} 查询
                   </span>
                 </div>
                 {mappedQueriesToHeadings[heading].map((q: RichHistoryQuery) => {
@@ -256,11 +256,11 @@ export function RichHistoryQueriesTab(props: Props) {
           })}
         {partialResults ? (
           <div>
-            Showing {queries.length} of {totalQueries} <Button onClick={loadMoreRichHistory}>Load more</Button>
+            显示 {queries.length} {totalQueries} <Button onClick={loadMoreRichHistory}>更多</Button>
           </div>
         ) : null}
         <div className={styles.footer}>
-          {!config.queryHistoryEnabled ? 'The history is local to your browser and is not shared with others.' : ''}
+          {!config.queryHistoryEnabled ? '历史记录是浏览器本地的，不与他人共享。' : ''}
         </div>
       </div>
     </div>
