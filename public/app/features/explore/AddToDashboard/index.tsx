@@ -24,7 +24,7 @@ export const AddToDashboard = ({ exploreId }: Props) => {
         aria-label="添加 Dashboard"
         disabled={!explorePaneHasQueries}
       >
-        添加 Dashboard
+        添加到仪表盘
       </ToolbarButton>
 
       {isOpen && <AddToDashboardModal onClose={() => setIsOpen(false)} exploreId={exploreId} />}

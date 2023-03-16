@@ -428,7 +428,7 @@ export class QueryEditorRow<TQuery extends DataQuery> extends PureComponent<Prop
           />
         )}
         {this.renderExtraActions()}
-        <QueryOperationAction title="重复的查询" icon="copy" onClick={this.onCopyQuery} />
+        <QueryOperationAction title="重复查询" icon="copy" onClick={this.onCopyQuery} />
         {!hideDisableQuery ? (
           <QueryOperationAction
             title="禁用/启用查询"
