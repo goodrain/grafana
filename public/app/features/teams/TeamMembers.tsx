@@ -90,22 +90,22 @@ export class TeamMembers extends PureComponent<Props, State> {
       <div>
         <div className="page-action-bar">
           <div className="gf-form gf-form--grow">
-            <FilterInput placeholder="Search members" value={searchMemberQuery} onChange={this.onSearchQueryChange} />
+            <FilterInput placeholder="搜索成员" value={searchMemberQuery} onChange={this.onSearchQueryChange} />
           </div>
           <Button className="pull-right" onClick={this.onToggleAdding} disabled={isAdding || !isTeamAdmin}>
-            Add member
+            添加成员
           </Button>
         </div>
 
         <SlideDown in={isAdding}>
           <div className="cta-form">
             <CloseButton aria-label="Close 'Add team member' dialogue" onClick={this.onToggleAdding} />
-            <Label htmlFor="user-picker">Add team member</Label>
+            <Label htmlFor="user-picker">添加团队成员</Label>
             <div className="gf-form-inline">
               <UserPicker inputId="user-picker" onSelected={this.onUserSelected} className="min-width-30" />
               {this.state.newTeamMember && (
                 <Button type="submit" onClick={this.onAddUserToTeam}>
-                  Add to team
+                  添加团队
                 </Button>
               )}
             </div>
@@ -117,11 +117,11 @@ export class TeamMembers extends PureComponent<Props, State> {
             <thead>
               <tr>
                 <th />
-                <th>Login</th>
-                <th>Email</th>
-                <th>Name</th>
+                <th>登陆</th>
+                <th>邮箱</th>
+                <th>名称</th>
                 <WithFeatureToggle featureToggle={editorsCanAdmin}>
-                  <th>Permission</th>
+                  <th>权限</th>
                 </WithFeatureToggle>
                 {syncEnabled && <th />}
                 <th style={{ width: '1%' }} />

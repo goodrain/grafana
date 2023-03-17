@@ -128,8 +128,8 @@ export class SharedPreferences extends PureComponent<Props, State> {
       <Form onSubmit={this.onSubmitForm}>
         {() => {
           return (
-            <FieldSet label={<Trans i18nKey="shared-preferences.title">Preferences</Trans>} disabled={disabled}>
-              <Field label={t('shared-preferences.fields.theme-label', 'UI Theme')}>
+            <FieldSet label={<Trans i18nKey="shared-preferences.title">偏好</Trans>} disabled={disabled}>
+              <Field label={t('shared-preferences.fields.theme-label', 'UI主题')}>
                 <RadioButtonGroup
                   options={themes}
                   value={themes.find((item) => item.value === theme)?.value}
@@ -141,24 +141,24 @@ export class SharedPreferences extends PureComponent<Props, State> {
                 label={
                   <Label htmlFor="home-dashboard-select">
                     <span className={styles.labelText}>
-                      <Trans i18nKey="shared-preferences.fields.home-dashboard-label">Home Dashboard</Trans>
+                      <Trans i18nKey="shared-preferences.fields.home-dashboard-label">主页 Dashboard</Trans>
                     </span>
                   </Label>
                 }
-                data-testid="User preferences home dashboard drop down"
+                data-testid="用户首选项主仪表板下拉"
               >
                 <DashboardPicker
                   value={homeDashboardUID}
                   onChange={(v) => this.onHomeDashboardChanged(v?.uid ?? '')}
                   defaultOptions={true}
                   isClearable={true}
-                  placeholder={t('shared-preferences.fields.home-dashboard-placeholder', 'Default dashboard')}
+                  placeholder={t('shared-preferences.fields.home-dashboard-placeholder', '默认 dashboard')}
                   inputId="home-dashboard-select"
                 />
               </Field>
 
               <Field
-                label={t('shared-dashboard.fields.timezone-label', 'Timezone')}
+                label={t('shared-dashboard.fields.timezone-label', '时区')}
                 data-testid={selectors.components.TimeZonePicker.containerV2}
               >
                 <TimeZonePicker
@@ -170,7 +170,7 @@ export class SharedPreferences extends PureComponent<Props, State> {
               </Field>
 
               <Field
-                label={t('shared-preferences.fields.week-start-label', 'Week start')}
+                label={t('shared-preferences.fields.week-start-label', '周开始')}
                 data-testid={selectors.components.WeekStartPicker.containerV2}
               >
                 <WeekStartPicker
@@ -185,7 +185,7 @@ export class SharedPreferences extends PureComponent<Props, State> {
                   label={
                     <Label htmlFor="locale-select">
                       <span className={styles.labelText}>
-                        <Trans i18nKey="shared-preferences.fields.locale-label">Language</Trans>
+                        <Trans i18nKey="shared-preferences.fields.locale-label">语言</Trans>
                       </span>
                       <FeatureBadge featureState={FeatureState.beta} />
                     </Label>
@@ -196,7 +196,7 @@ export class SharedPreferences extends PureComponent<Props, State> {
                     value={languages.find((lang) => lang.value === locale)}
                     onChange={(locale: SelectableValue<string>) => this.onLocaleChanged(locale.value ?? '')}
                     options={languages}
-                    placeholder={t('shared-preferences.fields.locale-placeholder', 'Choose language')}
+                    placeholder={t('shared-preferences.fields.locale-placeholder', '选择语言')}
                     inputId="locale-select"
                   />
                 </Field>
@@ -208,7 +208,7 @@ export class SharedPreferences extends PureComponent<Props, State> {
                   variant="primary"
                   data-testid={selectors.components.UserProfile.preferencesSaveButton}
                 >
-                  <Trans i18nKey="common.save">Save</Trans>
+                  <Trans i18nKey="common.save">保存</Trans>
                 </Button>
               </div>
             </FieldSet>

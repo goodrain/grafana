@@ -10,6 +10,7 @@ import (
 	"github.com/grafana/grafana/pkg/services/navtree"
 	"github.com/grafana/grafana/pkg/services/org"
 	"github.com/grafana/grafana/pkg/services/serviceaccounts"
+	"github.com/grafana/grafana/pkg/util"
 )
 
 func (s *ServiceImpl) getOrgAdminNode(c *models.ReqContext) (*navtree.NavLink, error) {
@@ -18,9 +19,9 @@ func (s *ServiceImpl) getOrgAdminNode(c *models.ReqContext) (*navtree.NavLink, e
 	hasAccess := ac.HasAccess(s.accessControl, c)
 	if hasAccess(ac.ReqOrgAdmin, datasources.ConfigurationPageAccess) {
 		configNodes = append(configNodes, &navtree.NavLink{
-			Text:     "Data sources",
+			Text:     util.Translation("Data sources"),
 			Icon:     "database",
-			SubTitle: "Add and configure data sources",
+			SubTitle: util.Translation("Add and configure data sources"),
 			Id:       "datasources",
 			Url:      s.cfg.AppSubURL + "/datasources",
 		})
@@ -28,9 +29,9 @@ func (s *ServiceImpl) getOrgAdminNode(c *models.ReqContext) (*navtree.NavLink, e
 
 	if s.features.IsEnabled(featuremgmt.FlagCorrelations) && hasAccess(ac.ReqOrgAdmin, correlations.ConfigurationPageAccess) {
 		configNodes = append(configNodes, &navtree.NavLink{
-			Text:     "Correlations",
+			Text:     util.Translation("Correlations"),
 			Icon:     "gf-glue",
-			SubTitle: "Add and configure correlations",
+			SubTitle: util.Translation("Add and configure correlations"),
 			Id:       "correlations",
 			Url:      s.cfg.AppSubURL + "/datasources/correlations",
 		})
@@ -38,9 +39,9 @@ func (s *ServiceImpl) getOrgAdminNode(c *models.ReqContext) (*navtree.NavLink, e
 
 	if hasAccess(ac.ReqOrgAdmin, ac.EvalPermission(ac.ActionOrgUsersRead)) {
 		configNodes = append(configNodes, &navtree.NavLink{
-			Text:     "Users",
+			Text:     util.Translation("Users"),
 			Id:       "users",
-			SubTitle: "Invite and assign roles to users",
+			SubTitle: util.Translation("Invite and assign roles to users"),
 			Icon:     "user",
 			Url:      s.cfg.AppSubURL + "/org/users",
 		})
@@ -48,9 +49,9 @@ func (s *ServiceImpl) getOrgAdminNode(c *models.ReqContext) (*navtree.NavLink, e
 
 	if hasAccess(s.ReqCanAdminTeams, ac.TeamsAccessEvaluator) {
 		configNodes = append(configNodes, &navtree.NavLink{
-			Text:     "Teams",
+			Text:     util.Translation("Teams"),
 			Id:       "teams",
-			SubTitle: "Groups of users that have common dashboard and permission needs",
+			SubTitle: util.Translation("Groups of users that have common dashboard and permission needs"),
 			Icon:     "users-alt",
 			Url:      s.cfg.AppSubURL + "/org/teams",
 		})
@@ -59,9 +60,9 @@ func (s *ServiceImpl) getOrgAdminNode(c *models.ReqContext) (*navtree.NavLink, e
 	// FIXME: while we don't have a permissions for listing plugins the legacy check has to stay as a default
 	if plugins.ReqCanAdminPlugins(s.cfg)(c) || hasAccess(plugins.ReqCanAdminPlugins(s.cfg), plugins.AdminAccessEvaluator) {
 		configNodes = append(configNodes, &navtree.NavLink{
-			Text:     "Plugins",
+			Text:     util.Translation("Plugins"),
 			Id:       "plugins",
-			SubTitle: "Extend the Grafana experience with plugins",
+			SubTitle: util.Translation("Extend the Grafana experience with plugins"),
 			Icon:     "plug",
 			Url:      s.cfg.AppSubURL + "/plugins",
 		})
@@ -69,9 +70,9 @@ func (s *ServiceImpl) getOrgAdminNode(c *models.ReqContext) (*navtree.NavLink, e
 
 	if hasAccess(ac.ReqOrgAdmin, ac.OrgPreferencesAccessEvaluator) {
 		configNodes = append(configNodes, &navtree.NavLink{
-			Text:     "Preferences",
+			Text:     util.Translation("Preferences"),
 			Id:       "org-settings",
-			SubTitle: "Manage preferences across an organization",
+			SubTitle: util.Translation("Manage preferences across an organization"),
 			Icon:     "sliders-v-alt",
 			Url:      s.cfg.AppSubURL + "/org",
 		})
@@ -86,9 +87,9 @@ func (s *ServiceImpl) getOrgAdminNode(c *models.ReqContext) (*navtree.NavLink, e
 	apiKeysHidden := hideApiKeys == "1" && len(apiKeys) == 0
 	if hasAccess(ac.ReqOrgAdmin, ac.ApiKeyAccessEvaluator) && !apiKeysHidden {
 		configNodes = append(configNodes, &navtree.NavLink{
-			Text:     "API keys",
+			Text:     util.Translation("API keys"),
 			Id:       "apikeys",
-			SubTitle: "Manage and create API keys that are used to interact with Grafana HTTP APIs",
+			SubTitle: util.Translation("Manage and create API keys that are used to interact with Grafana HTTP APIs"),
 			Icon:     "key-skeleton-alt",
 			Url:      s.cfg.AppSubURL + "/org/apikeys",
 		})
@@ -96,9 +97,9 @@ func (s *ServiceImpl) getOrgAdminNode(c *models.ReqContext) (*navtree.NavLink, e
 
 	if enableServiceAccount(s, c) {
 		configNodes = append(configNodes, &navtree.NavLink{
-			Text:     "Service accounts",
+			Text:     util.Translation("Service accounts"),
 			Id:       "serviceaccounts",
-			SubTitle: "Use service accounts to run automated workloads in Grafana",
+			SubTitle: util.Translation("Use service accounts to run automated workloads in Grafana"),
 			Icon:     "gf-service-account",
 			Url:      s.cfg.AppSubURL + "/org/serviceaccounts",
 		})
@@ -106,8 +107,8 @@ func (s *ServiceImpl) getOrgAdminNode(c *models.ReqContext) (*navtree.NavLink, e
 
 	configNode := &navtree.NavLink{
 		Id:         navtree.NavIDCfg,
-		Text:       "Configuration",
-		SubTitle:   "Organization: " + c.OrgName,
+		Text:       util.Translation("Configuration"),
+		SubTitle:   util.Translation("Organization: ") + c.OrgName,
 		Icon:       "cog",
 		Section:    navtree.NavSectionConfig,
 		SortWeight: navtree.WeightConfig,

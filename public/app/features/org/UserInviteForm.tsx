@@ -46,29 +46,29 @@ export const UserInviteForm = () => {
             <FieldSet>
               <Field
                 invalid={!!errors.loginOrEmail}
-                error={!!errors.loginOrEmail ? 'Email or username is required' : undefined}
-                label="Email or username"
+                error={!!errors.loginOrEmail ? '邮箱或者用户名必填' : undefined}
+                label="邮箱或者用户名"
               >
-                <Input {...register('loginOrEmail', { required: true })} placeholder="email@example.com" />
+                <Input {...register('loginOrEmail', { required: true })} placeholder="例如: email@example.com" />
               </Field>
-              <Field invalid={!!errors.name} label="Name">
+              <Field invalid={!!errors.name} label="名称">
                 <Input {...register('name')} placeholder="(optional)" />
               </Field>
-              <Field invalid={!!errors.role} label="Role">
+              <Field invalid={!!errors.role} label="角色">
                 <InputControl
                   render={({ field: { ref, ...field } }) => <RadioButtonGroup {...field} options={roles} />}
                   control={control}
                   name="role"
                 />
               </Field>
-              <Field label="Send invite email">
+              <Field label="发送邮件邀请">
                 <Switch id="send-email-switch" {...register('sendEmail')} />
               </Field>
             </FieldSet>
             <Stack>
-              <Button type="submit">Submit</Button>
+              <Button type="submit">提交</Button>
               <LinkButton href={locationUtil.assureBaseUrl(getConfig().appSubUrl + '/org/users')} variant="secondary">
-                Back
+                返回
               </LinkButton>
             </Stack>
           </>

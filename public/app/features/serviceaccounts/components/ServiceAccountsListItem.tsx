@@ -19,7 +19,7 @@ type ServiceAccountListItemProps = {
 };
 
 const getServiceAccountsAriaLabel = (name: string) => {
-  return `Edit service account's ${name} details`;
+  return `编辑服务帐户的${name}详细信息`;
 };
 
 const ServiceAccountListItem = memo(
@@ -98,14 +98,14 @@ const ServiceAccountListItem = memo(
           <a
             className="ellipsis"
             href={editUrl}
-            title="Tokens"
+            title="令牌"
             aria-label={getServiceAccountsAriaLabel(serviceAccount.name)}
           >
             <div className={cx(styles.tokensInfo, { [styles.tokensInfoSecondary]: !serviceAccount.tokens })}>
               <span>
                 <Icon name="key-skeleton-alt"></Icon>
               </span>
-              {serviceAccount.tokens || 'No tokens'}
+              {serviceAccount.tokens || '没有令牌'}
             </div>
           </a>
         </td>
@@ -113,17 +113,17 @@ const ServiceAccountListItem = memo(
           <HorizontalGroup justify="flex-end">
             {contextSrv.hasPermission(AccessControlAction.ServiceAccountsWrite) && !serviceAccount.tokens && (
               <Button onClick={() => onAddTokenClick(serviceAccount)} disabled={serviceAccount.isDisabled}>
-                Add token
+                添加令牌
               </Button>
             )}
             {contextSrv.hasPermissionInMetadata(AccessControlAction.ServiceAccountsWrite, serviceAccount) &&
               (serviceAccount.isDisabled ? (
                 <Button variant="primary" onClick={() => onEnable(serviceAccount)}>
-                  Enable
+                  启用
                 </Button>
               ) : (
                 <Button variant="secondary" onClick={() => onDisable(serviceAccount)}>
-                  Disable
+                  禁用
                 </Button>
               ))}
             {contextSrv.hasPermissionInMetadata(AccessControlAction.ServiceAccountsDelete, serviceAccount) && (
@@ -132,7 +132,7 @@ const ServiceAccountListItem = memo(
                 name="trash-alt"
                 size="md"
                 onClick={() => onRemoveButtonClick(serviceAccount)}
-                aria-label={`Delete service account ${serviceAccount.name}`}
+                aria-label={`删除${serviceAccount.name}服务账号`}
               />
             )}
           </HorizontalGroup>

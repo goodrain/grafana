@@ -19,10 +19,10 @@ export function buildNavModel(team: Team): NavModelItem {
   const navModel: NavModelItem = {
     img: team.avatarUrl,
     id: 'team-' + team.id,
-    subTitle: 'Manage members and settings',
+    subTitle: '管理成员和设置',
     url: '',
     text: team.name,
-    breadcrumbs: [{ title: 'Teams', url: 'org/teams' }],
+    breadcrumbs: [{ title: '团队', url: 'org/teams' }],
     children: [
       // With RBAC this tab will always be available (but not always editable)
       // With Legacy it will be hidden by hideTabsFromNonTeamAdmin should the user not be allowed to see it
@@ -30,7 +30,7 @@ export function buildNavModel(team: Team): NavModelItem {
         active: false,
         icon: 'sliders-v-alt',
         id: `team-settings-${team.id}`,
-        text: 'Settings',
+        text: '设置',
         url: `org/teams/edit/${team.id}/settings`,
       },
     ],
@@ -47,7 +47,7 @@ export function buildNavModel(team: Team): NavModelItem {
       active: false,
       icon: 'users-alt',
       id: `team-members-${team.id}`,
-      text: 'Members',
+      text: '成员',
       url: `org/teams/edit/${team.id}/members`,
     });
   }
@@ -56,7 +56,7 @@ export function buildNavModel(team: Team): NavModelItem {
     active: false,
     icon: 'sync',
     id: `team-groupsync-${team.id}`,
-    text: 'External group sync',
+    text: '外部组同步',
     url: `org/teams/edit/${team.id}/groupsync`,
   };
 

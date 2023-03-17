@@ -18,9 +18,9 @@ interface TeamDTO {
 const pageNav: NavModelItem = {
   icon: 'users-alt',
   id: 'team-new',
-  text: 'New team',
-  subTitle: 'Create a new team. Teams let you grant permissions to a group of users.',
-  breadcrumbs: [{ title: 'Configuration', url: 'org/teams' }],
+  text: '新增团队',
+  subTitle: '创建一个新的团队。团队允许您向一组用户授予权限。',
+  breadcrumbs: [{ title: '配置', url: 'org/teams' }],
 };
 
 export const CreateTeam = (): JSX.Element => {
@@ -53,11 +53,11 @@ export const CreateTeam = (): JSX.Element => {
         <Form onSubmit={createTeam}>
           {({ register, errors }) => (
             <FieldSet>
-              <Field label="Name" required invalid={!!errors.name} error="Team name is required">
+              <Field label="名称" required invalid={!!errors.name} error="团队名称必填">
                 <Input {...register('name', { required: true })} id="team-name" />
               </Field>
               {contextSrv.licensedAccessControlEnabled() && (
-                <Field label="Role">
+                <Field label="角色">
                   <TeamRolePicker
                     teamId={0}
                     roleOptions={roleOptions}
@@ -70,14 +70,14 @@ export const CreateTeam = (): JSX.Element => {
                 </Field>
               )}
               <Field
-                label={'Email'}
-                description={'This is optional and is primarily used for allowing custom team avatars.'}
+                label={'邮箱'}
+                description={'这是可选的，主要用于允许自定义团队头像。'}
               >
-                <Input {...register('email')} type="email" id="team-email" placeholder="email@test.com" />
+                <Input {...register('email')} type="email" id="team-email" placeholder="例如: email@test.com" />
               </Field>
               <div className="gf-form-button-row">
                 <Button type="submit" variant="primary">
-                  Create
+                  创建
                 </Button>
               </div>
             </FieldSet>

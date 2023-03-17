@@ -20,10 +20,10 @@ export const ServiceAccountTokensTable = ({ tokens, timeZone, tokenActionsDisabl
     <table className={cx(styles.section, 'filter-table')}>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Expires</th>
-          <th>Created</th>
-          <th>Last used at</th>
+          <th>名称</th>
+          <th>到期</th>
+          <th>创建</th>
+          <th>最后使用于</th>
           <th />
           <th />
         </tr>
@@ -41,7 +41,7 @@ export const ServiceAccountTokensTable = ({ tokens, timeZone, tokenActionsDisabl
               <td className="width-1 text-center">{key.isRevoked && <TokenRevoked />}</td>
               <td>
                 <DeleteButton
-                  aria-label={`Delete service account token ${key.name}`}
+                  aria-label={`删除服务帐户令牌${key.name}`}
                   size="sm"
                   onConfirm={() => onDelete(key)}
                   disabled={tokenActionsDisabled}
@@ -57,14 +57,14 @@ export const ServiceAccountTokensTable = ({ tokens, timeZone, tokenActionsDisabl
 
 function formatLastUsedAtDate(timeZone: TimeZone, lastUsedAt?: string): string {
   if (!lastUsedAt) {
-    return 'Never';
+    return '从来没有';
   }
   return dateTimeFormat(lastUsedAt, { timeZone });
 }
 
 function formatDate(timeZone: TimeZone, expiration?: string): string {
   if (!expiration) {
-    return 'No expiration date';
+    return '无有效期';
   }
   return dateTimeFormat(expiration, { timeZone });
 }
@@ -79,9 +79,9 @@ const TokenRevoked = () => {
   const styles = useStyles2(getStyles);
   return (
     <span className={styles.hasExpired}>
-      Revoked
+      撤销
       <span className={styles.tooltipContainer}>
-        <Tooltip content="This token has been publicly exposed. Please rotate this token">
+        <Tooltip content="此令牌已被公开。请旋转此令牌">
           <Icon name="exclamation-triangle" className={styles.toolTipIcon} />
         </Tooltip>
       </span>
@@ -109,9 +109,9 @@ const TokenExpiration = ({ timeZone, token }: TokenExpirationProps) => {
   if (token.hasExpired) {
     return (
       <span className={styles.hasExpired}>
-        Expired
+        过期
         <span className={styles.tooltipContainer}>
-          <Tooltip content="This token has expired">
+          <Tooltip content="此令牌已过期">
             <Icon name="exclamation-triangle" className={styles.toolTipIcon} />
           </Tooltip>
         </span>

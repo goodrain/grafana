@@ -23,9 +23,9 @@ export const ApiKeysTable: FC<Props> = ({ apiKeys, timeZone, onDelete, onMigrate
     <table className="filter-table">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Role</th>
-          <th>Expires</th>
+          <th>名称</th>
+          <th>角色</th>
+          <th>到期</th>
           <th style={{ width: '34px' }} />
         </tr>
       </thead>
@@ -41,7 +41,7 @@ export const ApiKeysTable: FC<Props> = ({ apiKeys, timeZone, onDelete, onMigrate
                   {formatDate(key.expiration, timeZone)}
                   {isExpired && (
                     <span className={styles.tooltipContainer}>
-                      <Tooltip content="This API key has expired.">
+                      <Tooltip content="此API密钥已过期。">
                         <Icon name="exclamation-triangle" />
                       </Tooltip>
                     </span>
@@ -50,7 +50,7 @@ export const ApiKeysTable: FC<Props> = ({ apiKeys, timeZone, onDelete, onMigrate
                 <td>
                   <HorizontalGroup justify="flex-end">
                     <Button size="sm" onClick={() => onMigrate(key)}>
-                      Migrate to service account
+                    迁移到服务帐户
                     </Button>
                     <DeleteButton
                       aria-label="Delete API key"
@@ -71,7 +71,7 @@ export const ApiKeysTable: FC<Props> = ({ apiKeys, timeZone, onDelete, onMigrate
 
 function formatDate(expiration: string | undefined, timeZone: TimeZone): string {
   if (!expiration) {
-    return 'No expiration date';
+    return '无有效期';
   }
   return dateTimeFormat(expiration, { timeZone });
 }

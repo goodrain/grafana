@@ -145,7 +145,7 @@ export const RolePicker = ({
   if (isLoading) {
     return (
       <HorizontalGroup justify="center">
-        <span>Loading...</span>
+        <span>加载...</span>
         <Spinner size={16} />
       </HorizontalGroup>
     );

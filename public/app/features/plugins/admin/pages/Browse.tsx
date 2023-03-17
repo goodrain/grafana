@@ -37,8 +37,8 @@ export default function Browse({ route }: GrafanaRouteComponentProps): ReactElem
     sortBy,
   });
   const filterByOptions = [
-    { value: 'all', label: 'All' },
-    { value: 'installed', label: 'Installed' },
+    { value: 'all', label: '全部' },
+    { value: 'installed', label: '已安装' },
   ];
 
   const onSortByChange = (value: SelectableValue<string>) => {
@@ -75,10 +75,10 @@ export default function Browse({ route }: GrafanaRouteComponentProps): ReactElem
                 value={filterByType}
                 onChange={onFilterByTypeChange}
                 options={[
-                  { value: 'all', label: 'All' },
-                  { value: 'datasource', label: 'Data sources' },
-                  { value: 'panel', label: 'Panels' },
-                  { value: 'app', label: 'Applications' },
+                  { value: 'all', label: '全部' },
+                  { value: 'datasource', label: '数据源' },
+                  { value: 'panel', label: '面板' },
+                  { value: 'app', label: '应用' },
                 ]}
               />
             </div>
@@ -90,7 +90,7 @@ export default function Browse({ route }: GrafanaRouteComponentProps): ReactElem
               </div>
             ) : (
               <Tooltip
-                content="This filter has been disabled because the Grafana server cannot access grafana.com"
+                content="此过滤器已被禁用，因为Grafana服务器无法访问grafana.com"
                 placement="top"
               >
                 <div>
@@ -107,16 +107,16 @@ export default function Browse({ route }: GrafanaRouteComponentProps): ReactElem
             {/* Sorting */}
             <div>
               <Select
-                aria-label="Sort Plugins List"
+                aria-label="排序插件列表"
                 width={24}
                 value={sortBy}
                 onChange={onSortByChange}
                 options={[
-                  { value: 'nameAsc', label: 'Sort by name (A-Z)' },
-                  { value: 'nameDesc', label: 'Sort by name (Z-A)' },
-                  { value: 'updated', label: 'Sort by updated date' },
-                  { value: 'published', label: 'Sort by published date' },
-                  { value: 'downloads', label: 'Sort by downloads' },
+                  { value: 'nameAsc', label: '按名称排序 (A-Z)' },
+                  { value: 'nameDesc', label: '按名称排序 (Z-A)' },
+                  { value: 'updated', label: '按更新日期排序' },
+                  { value: 'published', label: '按发表日期排序' },
+                  { value: 'downloads', label: '按下载量排序' },
                 ]}
               />
             </div>
@@ -131,9 +131,9 @@ export default function Browse({ route }: GrafanaRouteComponentProps): ReactElem
                   {
                     value: PluginListDisplayMode.Grid,
                     icon: 'table',
-                    description: 'Display plugins in a grid layout',
+                    description: '在网格布局中显示插件',
                   },
-                  { value: PluginListDisplayMode.List, icon: 'list-ul', description: 'Display plugins in list' },
+                  { value: PluginListDisplayMode.List, icon: 'list-ul', description: '在列表中显示插件' },
                 ]}
               />
             </div>
@@ -145,7 +145,7 @@ export default function Browse({ route }: GrafanaRouteComponentProps): ReactElem
               className={css`
                 margin-bottom: 0;
               `}
-              text="Loading results"
+              text="加载结果"
             />
           ) : (
             <PluginList plugins={plugins} displayMode={displayMode} />

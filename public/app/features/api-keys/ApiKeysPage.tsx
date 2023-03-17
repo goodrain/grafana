@@ -189,11 +189,11 @@ export class ApiKeysPageUnconnected extends PureComponent<Props, State> {
                   {apiKeysMigrated && <APIKeysMigratedCard onHideApiKeys={this.onHideApiKeys} />}
                   {showCTA ? (
                     <EmptyListCTA
-                      title="You haven't added any API keys yet."
+                      title="您还没有添加任何API密钥。"
                       buttonIcon="key-skeleton-alt"
                       onClick={toggleIsAdding}
-                      buttonTitle="New API key"
-                      proTip="Remember, you can provide view-only API access to other applications."
+                      buttonTitle="新增API密钥"
+                      proTip="请记住，您可以为其他应用程序提供仅视图的API访问。"
                       buttonDisabled={!canCreate}
                     />
                   ) : null}
@@ -213,7 +213,7 @@ export class ApiKeysPageUnconnected extends PureComponent<Props, State> {
                   />
                   {showTable ? (
                     <VerticalGroup>
-                      <InlineField disabled={includeExpiredDisabled} label="Include expired keys">
+                      <InlineField disabled={includeExpiredDisabled} label="包含过期的密钥">
                         <InlineSwitch id="showExpired" value={includeExpired} onChange={this.onIncludeExpiredChange} />
                       </InlineField>
                       <ApiKeysTable

@@ -43,11 +43,11 @@ const UsersTable: FC<Props> = (props) => {
         <thead>
           <tr>
             <th />
-            <th>Login</th>
-            <th>Email</th>
-            <th>Name</th>
+            <th>登录</th>
+            <th>邮箱</th>
+            <th>名称</th>
             <th>Seen</th>
-            <th>Role</th>
+            <th>角色</th>
             <th style={{ width: '34px' }} />
             <th></th>
           </tr>

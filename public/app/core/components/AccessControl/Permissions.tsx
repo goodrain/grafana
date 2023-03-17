@@ -34,8 +34,8 @@ export type Props = {
 };
 
 export const Permissions = ({
-  title = 'Permissions',
-  buttonLabel = 'Add a permission',
+  title = '权限',
+  buttonLabel = '添加权限',
   emptyLabel = 'There are no permissions',
   resource,
   resourceId,
@@ -157,7 +157,7 @@ export const Permissions = ({
           </table>
         )}
         <PermissionList
-          title="Role"
+          title="角色"
           items={builtInRoles}
           compareKey={'builtInRole'}
           permissionLevels={desc.permissions}
@@ -166,7 +166,7 @@ export const Permissions = ({
           canSet={canSetPermissions}
         />
         <PermissionList
-          title="User"
+          title="用户"
           items={users}
           compareKey={'userLogin'}
           permissionLevels={desc.permissions}
@@ -175,7 +175,7 @@ export const Permissions = ({
           canSet={canSetPermissions}
         />
         <PermissionList
-          title="Team"
+          title="团队"
           items={teams}
           compareKey={'team'}
           permissionLevels={desc.permissions}

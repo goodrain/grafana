@@ -17,9 +17,9 @@ export const ServiceAccountPermissions = (props: ServiceAccountPermissionsProps)
 
   return (
     <Permissions
-      title="Permissions"
-      addPermissionTitle="Add permission"
-      buttonLabel="Add permission"
+      title="权限"
+      addPermissionTitle="添加权限"
+      buttonLabel="添加权限"
       resource="serviceaccounts"
       resourceId={props.serviceAccount.id}
       canSetPermissions={canSetPermissions}

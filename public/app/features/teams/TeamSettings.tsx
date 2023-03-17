@@ -46,19 +46,19 @@ export const TeamSettings: FC<Props> = ({ team, updateTeam }) => {
         disabled={!canWriteTeamSettings}
       >
         {({ register, errors }) => (
-          <FieldSet label="Team details">
+          <FieldSet label="团队详情">
             <Field
-              label="Name"
+              label="名称"
               disabled={!canWriteTeamSettings}
               required
               invalid={!!errors.name}
-              error="Name is required"
+              error="名称必填"
             >
               <Input {...register('name', { required: true })} id="name-input" />
             </Field>
 
             {contextSrv.licensedAccessControlEnabled() && (
-              <Field label="Role">
+              <Field label="角色">
                 <TeamRolePicker
                   teamId={team.id}
                   roleOptions={roleOptions}
@@ -72,14 +72,14 @@ export const TeamSettings: FC<Props> = ({ team, updateTeam }) => {
             )}
 
             <Field
-              label="Email"
-              description="This is optional and is primarily used to set the team profile avatar (via gravatar service)."
+              label="邮箱"
+              description="这是可选的，主要用于设置团队简介头像(通过gravatar服务)。"
               disabled={!canWriteTeamSettings}
             >
               <Input {...register('email')} placeholder="team@email.com" type="email" id="email-input" />
             </Field>
             <Button type="submit" disabled={!canWriteTeamSettings}>
-              Update
+              更新
             </Button>
           </FieldSet>
         )}

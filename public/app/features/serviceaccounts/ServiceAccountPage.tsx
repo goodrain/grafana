@@ -85,8 +85,8 @@ export const ServiceAccountPageUnconnected = ({
   const pageNav: NavModelItem = {
     text: serviceAccount.name,
     img: serviceAccount.avatarUrl,
-    breadcrumbs: [{ title: 'Service accounts', url: 'org/serviceaccounts' }],
-    subTitle: 'Manage settings for an individual service account.',
+    breadcrumbs: [{ title: '服务账号', url: 'org/serviceaccounts' }],
+    subTitle: '管理单个服务帐户的设置。',
   };
 
   useEffect(() => {
@@ -147,7 +147,7 @@ export const ServiceAccountPageUnconnected = ({
                 onClick={showDeleteServiceAccountModal(true)}
                 disabled={!contextSrv.hasPermission(AccessControlAction.ServiceAccountsDelete)}
               >
-                Delete service account
+                删除服务账号
               </Button>
               {serviceAccount.isDisabled ? (
                 <Button
@@ -156,7 +156,7 @@ export const ServiceAccountPageUnconnected = ({
                   onClick={handleServiceAccountEnable}
                   disabled={!ableToWrite}
                 >
-                  Enable service account
+                  启用服务帐户
                 </Button>
               ) : (
                 <Button
@@ -165,7 +165,7 @@ export const ServiceAccountPageUnconnected = ({
                   onClick={showDisableServiceAccountModal(true)}
                   disabled={!ableToWrite}
                 >
-                  Disable service account
+                  禁用服务帐户
                 </Button>
               )}
             </HorizontalGroup>
@@ -179,9 +179,9 @@ export const ServiceAccountPageUnconnected = ({
             />
           )}
           <HorizontalGroup justify="space-between" height="auto">
-            <h3>Tokens</h3>
+            <h3>令牌</h3>
             <Button onClick={() => setIsTokenModalOpen(true)} disabled={tokenActionsDisabled}>
-              Add service account token
+              添加服务账号令牌
             </Button>
           </HorizontalGroup>
           {tokens && (
@@ -197,17 +197,17 @@ export const ServiceAccountPageUnconnected = ({
 
         <ConfirmModal
           isOpen={isDeleteModalOpen}
-          title="Delete service account"
-          body="Are you sure you want to delete this service account?"
-          confirmText="Delete service account"
+          title="删除服务账号"
+          body="你确定要删除服务账号吗？"
+          confirmText="删除服务账号"
           onConfirm={handleServiceAccountDelete}
           onDismiss={showDeleteServiceAccountModal(false)}
         />
         <ConfirmModal
           isOpen={isDisableModalOpen}
-          title="Disable service account"
-          body="Are you sure you want to disable this service account?"
-          confirmText="Disable service account"
+          title="禁用服务账号"
+          body="你确定要金庸服务账号吗？"
+          confirmText="禁用服务账号"
           onConfirm={handleServiceAccountDisable}
           onDismiss={showDisableServiceAccountModal(false)}
         />
