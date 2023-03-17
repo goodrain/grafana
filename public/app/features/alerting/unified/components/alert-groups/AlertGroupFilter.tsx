@@ -66,7 +66,7 @@ export const AlertGroupFilter = ({ groups }: Props) => {
         />
         {showClearButton && (
           <Button className={styles.clearButton} variant={'secondary'} icon="times" onClick={clearFilters}>
-            清晰的过滤器
+            清空过滤条件
           </Button>
         )}
       </div>

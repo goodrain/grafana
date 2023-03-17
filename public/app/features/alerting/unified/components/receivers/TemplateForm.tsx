@@ -113,7 +113,7 @@ export const TemplateForm: FC<Props> = ({ existing, alertManagerSourceName, conf
       )}
       {provenance && <ProvisioningAlert resource={ProvisionedResource.Template} />}
       <FieldSet disabled={Boolean(provenance)}>
-        <Field label="模版名称" error={errors?.name?.message} invalid={!!errors.name?.message} required>
+        <Field label="模板名称" error={errors?.name?.message} invalid={!!errors.name?.message} required>
           <Input
             {...register('name', {
               required: { value: true, message: '必填.' },
@@ -149,7 +149,7 @@ export const TemplateForm: FC<Props> = ({ existing, alertManagerSourceName, conf
               )}
               {!loading && (
                 <Button type="submit" variant="primary">
-                  保存模版
+                  保存模板
                 </Button>
               )}
               <LinkButton

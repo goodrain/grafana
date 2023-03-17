@@ -95,7 +95,7 @@ interface NotifierHealthProps {
 
 function NotifierHealth({ errorsByNotifier, errorDetail, lastNotify }: NotifierHealthProps) {
   const noErrorsColor = isLastNotifyNullDate(lastNotify) ? 'orange' : 'green';
-  const noErrorsText = isLastNotifyNullDate(lastNotify) ? '没有尝试' : 'OK';
+  const noErrorsText = isLastNotifyNullDate(lastNotify) ? '未发送' : '发送成功';
   return errorsByNotifier > 0 ? (
     <ReceiverError errorCount={errorsByNotifier} errorDetail={errorDetail} showErrorCount={false} />
   ) : (
@@ -110,7 +110,7 @@ interface ReceiverHealthProps {
 
 function ReceiverHealth({ errorsByReceiver, someWithNoAttempt }: ReceiverHealthProps) {
   const noErrorsColor = someWithNoAttempt ? 'orange' : 'green';
-  const noErrorsText = someWithNoAttempt ? 'No attempts' : 'OK';
+  const noErrorsText = someWithNoAttempt ? '未发送' : '发送成功';
   return errorsByReceiver > 0 ? (
     <ReceiverError errorCount={errorsByReceiver} showErrorCount={true} />
   ) : (
@@ -171,7 +171,7 @@ function NotifiersTable({ notifiersState }: NotifiersTableProps) {
     return [
       {
         id: 'health',
-        label: '健康',
+        label: '健康状态',
         renderCell: ({ data: { lastError, lastNotify } }) => {
           return (
             <NotifierHealth
@@ -191,13 +191,13 @@ function NotifiersTable({ notifiersState }: NotifiersTableProps) {
       },
       {
         id: 'lastNotify',
-        label: '最后一次交货尝试',
+        label: '最近通知时间',
         renderCell: ({ data: { lastNotify } }) => <LastNotify lastNotifyDate={lastNotify} />,
         size: 3,
       },
       {
         id: 'lastNotifyDuration',
-        label: '最后的时间',
+        label: '持续时间',
         renderCell: ({ data: { lastNotify, lastNotifyDuration } }) => (
           <>{isLastNotifyNullDate(lastNotify) && durationIsNull(lastNotifyDuration) ? '-' : lastNotifyDuration}</>
         ),
@@ -205,7 +205,7 @@ function NotifiersTable({ notifiersState }: NotifiersTableProps) {
       },
       {
         id: 'sendResolved',
-        label: '发送解决',
+        label: '发送结果',
         renderCell: ({ data: { sendResolved } }) => <>{String(Boolean(sendResolved))}</>,
         size: 1,
       },
@@ -384,7 +384,7 @@ function useGetColumns(
   ];
   const healthColumn: RowTableColumnProps = {
     id: 'health',
-    label: '健康',
+    label: '健康状态',
     renderCell: ({ data: { name } }) => {
       return (
         contactPointsState && (

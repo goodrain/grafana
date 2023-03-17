@@ -29,7 +29,7 @@ describe('useSilenceNavData', () => {
       icon: 'bell-slash',
       breadcrumbs: [{ title: 'Silences', url: 'alerting/silences' }],
       id: 'silence-new',
-      text: 'Add silence',
+      text: '添加静默',
     });
   });
 
@@ -41,7 +41,7 @@ describe('useSilenceNavData', () => {
       icon: 'bell-slash',
       breadcrumbs: [{ title: 'Silences', url: 'alerting/silences' }],
       id: 'silence-edit',
-      text: 'Edit silence',
+      text: '编辑静默',
     });
   });
 });

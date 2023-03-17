@@ -54,7 +54,7 @@ export const SilencesFilter = () => {
               <Tooltip
                 content={
                   <div>
-                    使用逗号分隔的匹配器列表过滤匹配器的沉默:
+                    使用逗号分隔的匹配器列表过滤匹配器的静默:
                     <pre>{`severity=critical, instance=~cluster-us-.+`}</pre>
                   </div>
                 }
@@ -83,7 +83,7 @@ export const SilencesFilter = () => {
       {(queryString || silenceState) && (
         <div className={styles.rowChild}>
           <Button variant="secondary" icon="times" onClick={clearFilters}>
-            清晰的过滤器
+          清空过滤条件
           </Button>
         </div>
       )}

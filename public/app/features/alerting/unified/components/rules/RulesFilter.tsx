@@ -152,7 +152,7 @@ const RulesFilter = () => {
             />
           </div>
           <div className={styles.rowChild}>
-            <Label>认为……是……</Label>
+            <Label>视图</Label>
             <RadioButtonGroup
               options={ViewOptions}
               value={String(queryParams['view'] ?? ViewOptions[0].value)}
@@ -169,7 +169,7 @@ const RulesFilter = () => {
               variant="secondary"
               onClick={handleClearFiltersClick}
             >
-              清晰的过滤器
+              
             </Button>
           </div>
         )}

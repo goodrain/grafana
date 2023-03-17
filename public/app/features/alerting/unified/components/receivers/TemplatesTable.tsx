@@ -64,9 +64,9 @@ export const TemplatesTable: FC<Props> = ({ config, alertManagerName }) => {
         <thead>
           <tr>
             <th></th>
-            <th>模版</th>
+            <th>模板</th>
             <Authorize actions={[permissions.update, permissions.delete]}>
-              <th>行动</th>
+              <th>操作</th>
             </Authorize>
           </tr>
         </thead>
@@ -97,7 +97,7 @@ export const TemplatesTable: FC<Props> = ({ config, alertManagerName }) => {
                           `/alerting/notifications/templates/${encodeURIComponent(name)}/edit`,
                           alertManagerName
                         )}
-                        tooltip="view template"
+                        tooltip="查看模板"
                         icon="file-alt"
                       />
                     )}
@@ -109,14 +109,14 @@ export const TemplatesTable: FC<Props> = ({ config, alertManagerName }) => {
                               `/alerting/notifications/templates/${encodeURIComponent(name)}/edit`,
                               alertManagerName
                             )}
-                            tooltip="edit template"
+                            tooltip="编辑模板"
                             icon="pen"
                           />
                         </Authorize>
                         <Authorize actions={[permissions.delete]}>
                           <ActionIcon
                             onClick={() => setTemplateToDelete(name)}
-                            tooltip="delete template"
+                            tooltip="删除模板"
                             icon="trash-alt"
                           />
                         </Authorize>
@@ -153,9 +153,9 @@ export const TemplatesTable: FC<Props> = ({ config, alertManagerName }) => {
       {!!templateToDelete && (
         <ConfirmModal
           isOpen={true}
-          title="删除模版"
-          body={`您确定要删除模板吗 "${templateToDelete}"?`}
-          confirmText="Yes, delete"
+          title="删除模板"
+          body={`您确定要删除模板"${templateToDelete}"吗?`}
+          confirmText="确定删除"
           onConfirm={deleteTemplate}
           onDismiss={() => setTemplateToDelete(undefined)}
         />

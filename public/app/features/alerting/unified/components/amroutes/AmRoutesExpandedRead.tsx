@@ -99,7 +99,7 @@ export const AmRoutesExpandedRead: FC<AmRoutesExpandedReadProps> = ({
           </Authorize>
         )}
       </div>
-      <div className={gridStyles.titleCell}>沉默时间</div>
+      <div className={gridStyles.titleCell}>静默时间</div>
       <div className={gridStyles.valueCell}>
         <MuteTimingsTable
           alertManagerSourceName={alertManagerSourceName!}

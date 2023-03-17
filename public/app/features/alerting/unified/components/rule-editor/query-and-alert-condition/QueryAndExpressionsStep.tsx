@@ -226,7 +226,7 @@ export const QueryAndExpressionsStep: FC<Props> = ({ editingExistingRule }) => {
                 }}
                 variant="secondary"
               >
-                添加表情
+                添加表达式
               </Button>
             )}
 

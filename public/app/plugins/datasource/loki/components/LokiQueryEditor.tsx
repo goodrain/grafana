@@ -122,7 +122,7 @@ export const LokiQueryEditor = React.memo<LokiQueryEditorProps>((props) => {
         >
           开始你的查询
         </Button>
-        <QueryHeaderSwitch label="解释" value={explain} onChange={onExplainChange} />
+        <QueryHeaderSwitch label="说明" value={explain} onChange={onExplainChange} />
         {editorMode === QueryEditorMode.Builder && (
           <>
             <QueryHeaderSwitch label="运行查询" value={rawQuery} onChange={onQueryPreviewChange} />

@@ -16,7 +16,7 @@ export const NoRulesSplash = () => {
         title="您还没有创建任何警报规则"
         buttonIcon="bell"
         buttonLink={'alerting/new'}
-        buttonTitle="新的警报规则"
+        buttonTitle="新增警报规则"
         proTip="还可以从现有面板和查询创建警报规则。"
         proTipLink="https://grafana.com/docs/"
         proTipLinkTitle="了解更多"

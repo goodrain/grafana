@@ -4,7 +4,7 @@ import "os"
 
 var translationMetadata = map[string]string{
 	"Learn about problems in your systems moments after they occur": "在系统出现问题后立即了解问题",
-	"Alerting":          "报警",
+	"Alerting":          "警报",
 	"Explore":           "探索",
 	"Explore your data": "探索你的数据",
 	"Alert rules":       "警报规则",
@@ -15,9 +15,9 @@ var translationMetadata = map[string]string{
 	"Determine how alerts are routed to contact points": "确定警报如何路由到联络点",
 	"Silences": "静默",
 	"Stop notifications from one or more alerting rules": "停止来自一个或多个警报规则的通知",
-	"Alert groups": "警戒组",
+	"Alert groups": "警报组",
 	"See grouped alerts from an Alertmanager instance": "请参阅 Alertmanager 实例的分组警报",
-	"Admin":                            "管理员",
+	"Admin":                            "管理",
 	"no admin configuration available": "没有可用的管理配置",
 	"At least one Alertmanager must be provided or configured as a datasource that handles alerts to choose this option": "要选择此选项，必须至少提供或配置一个Alertmanager作为处理警报的数据源",
 	"Sends HTTP POST request to DingDing": "向钉钉发送HTTP POST请求",

@@ -40,7 +40,7 @@ export const AmRootRoute: FC<AmRootRouteProps> = ({
     <div className={styles.container} data-testid="am-root-route-container">
       <div className={styles.titleContainer}>
         <h5 className={styles.title}>
-        根的政策 - <i>默认为所有警报</i>
+        根策略 - <i>默认为所有警报</i>
         </h5>
         {!isEditMode && !readOnly && (
           <Authorize actions={[permissions.update]}>

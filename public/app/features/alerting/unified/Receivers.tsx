@@ -42,10 +42,10 @@ function NotificationError({ errorCount }: NotificationErrorProps) {
         <Stack alignItems="center">
           <Icon name="exclamation-triangle" />
           <div className={styles.countMessage}>
-            {`${errorCount} ${pluralize('error', errorCount)} with contact points`}
+            {`${errorCount} ${pluralize('error', errorCount)} 有联络点`}
           </div>
         </Stack>
-        <div>{'Some alert notifications might not be delivered'}</div>
+        <div>{'一些警报通知可能无法传递'}</div>
       </Stack>
     </div>
   );
@@ -126,15 +126,15 @@ const Receivers = () => {
         )}
       </div>
       {error && !loading && (
-        <Alert severity="error" title="Error loading Alertmanager config">
-          {error.message || 'Unknown error.'}
+        <Alert severity="error" title="加载 Alertmanager 配置错误">
+          {error.message || '未知错误.'}
         </Alert>
       )}
       <GrafanaAlertmanagerDeliveryWarning
         alertmanagerChoice={alertmanagerChoice}
         currentAlertmanager={alertManagerSourceName}
       />
-      {loading && !config && <LoadingPlaceholder text="loading configuration..." />}
+      {loading && !config && <LoadingPlaceholder text="加载配置..." />}
       {config && !error && (
         <Switch>
           <Route exact={true} path="/alerting/notifications">
@@ -180,22 +180,22 @@ const Receivers = () => {
 function getPageNavigationModel(type: PageType | undefined, id: string | undefined) {
   let pageNav: NavModelItem | undefined;
   if (type === 'receivers' || type === 'templates') {
-    const objectText = type === 'receivers' ? 'contact point' : 'message template';
+    const objectText = type === 'receivers' ? '联络点' : '消息模板';
     if (id) {
       pageNav = {
         text: id,
-        subTitle: `Edit the settings for a specific ${objectText}`,
+        subTitle: `编辑特定${objectText}的设置 `,
       };
     } else {
       pageNav = {
-        text: `New ${objectText}`,
-        subTitle: `Create a new ${objectText} for your notifications`,
+        text: `新增 ${objectText}`,
+        subTitle: `为通知创建一个新的${objectText}`,
       };
     }
   } else if (type === 'global-config') {
     pageNav = {
-      text: 'Global config',
-      subTitle: 'Manage your global configuration',
+      text: '全局配置',
+      subTitle: '管理全局配置',
     };
   }
   return pageNav;

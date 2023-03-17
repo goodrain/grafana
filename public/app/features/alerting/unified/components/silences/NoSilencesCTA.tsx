@@ -17,12 +17,12 @@ export const NoSilencesSplash: FC<Props> = ({ alertManagerSourceName }) => {
   if (contextSrv.hasAccess(permissions.create, contextSrv.isEditor)) {
     return (
       <EmptyListCTA
-        title="你还没有制造任何沉默"
+        title="你还没有制造任何静默规则"
         buttonIcon="bell-slash"
         buttonLink={makeAMLink('alerting/silence/new', alertManagerSourceName)}
-        buttonTitle="新建沉默"
+        buttonTitle="新建静默规则"
       />
     );
   }
-  return <CallToActionCard callToActionElement={<div />} message="没有发现沉默。" />;
+  return <CallToActionCard callToActionElement={<div />} message="没有发现静默规则。" />;
 };

@@ -21,15 +21,15 @@ export const SilenceDetails = ({ silence }: Props) => {
   const duration = intervalToAbbreviatedDurationString({ start: new Date(startsAt), end: new Date(endsAt) });
   return (
     <div className={styles.container}>
-      <div className={styles.title}>Comment</div>
+      <div className={styles.title}>说明</div>
       <div>{comment}</div>
-      <div className={styles.title}>Schedule</div>
+      <div className={styles.title}>时间表</div>
       <div>{`${startsAtDate?.format(dateDisplayFormat)} - ${endsAtDate?.format(dateDisplayFormat)}`}</div>
-      <div className={styles.title}>Duration</div>
+      <div className={styles.title}>持续时间</div>
       <div> {duration}</div>
-      <div className={styles.title}>Created by</div>
+      <div className={styles.title}>创建人</div>
       <div> {createdBy}</div>
-      <div className={styles.title}>Affected alerts</div>
+      <div className={styles.title}>影响警报</div>
       <SilencedAlertsTable silencedAlerts={silencedAlerts} />
     </div>
   );

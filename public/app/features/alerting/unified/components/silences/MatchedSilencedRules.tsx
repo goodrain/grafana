@@ -55,19 +55,19 @@ export const MatchedSilencedRules = () => {
   return (
     <div>
       <h4 className={styles.title}>
-        Affected alert instances
+        受影响的警报实例
         {matchedAlertRules.length > 0 ? (
           <Badge className={styles.badge} color="blue" text={matchedAlertRules.length} />
         ) : null}
       </h4>
       <div className={styles.table}>
         {matchers.every((matcher) => !matcher.value && !matcher.name) ? (
-          <span>Add a valid matcher to see affected alerts</span>
+          <span>添加有效的匹配以查看受影响的警报</span>
         ) : (
           <>
             <DynamicTable items={matchedAlertRules.slice(0, 5) ?? []} isExpandable={false} cols={columns} />
             {matchedAlertRules.length > 5 && (
-              <div className={styles.moreMatches}>and {matchedAlertRules.length - 5} more</div>
+              <div className={styles.moreMatches}>和 {matchedAlertRules.length - 5} 更多</div>
             )}
           </>
         )}
@@ -80,7 +80,7 @@ function useColumns(): MatchedRulesTableColumnProps[] {
   return [
     {
       id: 'state',
-      label: 'State',
+      label: '状态',
       renderCell: function renderStateTag({ data: { matchedInstance } }) {
         return <AlertStateTag state={matchedInstance.state} />;
       },
@@ -88,7 +88,7 @@ function useColumns(): MatchedRulesTableColumnProps[] {
     },
     {
       id: 'labels',
-      label: 'Labels',
+      label: '标签',
       renderCell: function renderName({ data: { matchedInstance } }) {
         return <AlertLabels labels={matchedInstance.labels} />;
       },
@@ -96,7 +96,7 @@ function useColumns(): MatchedRulesTableColumnProps[] {
     },
     {
       id: 'created',
-      label: 'Created',
+      label: '创建',
       renderCell: function renderSummary({ data: { matchedInstance } }) {
         return (
           <>

@@ -64,10 +64,10 @@ export const MuteTimingsTable: FC<Props> = ({ alertManagerSourceName, muteTiming
 
   return (
     <div className={styles.container}>
-      {!hideActions && <h5>沉默时间</h5>}
+      {!hideActions && <h5>静默时间</h5>}
       {!hideActions && (
         <p>
-          静音时间是一个指定的时间间隔，可以在通知策略树中引用，以便在一天中的特定时间静音特定的通知策略。
+          静默时间是一个指定的时间间隔，可以在通知策略树中引用，以便在一天中的特定时间静默特定的通知策略。
         </p>
       )}
       {!hideActions && items.length > 0 && (
@@ -78,7 +78,7 @@ export const MuteTimingsTable: FC<Props> = ({ alertManagerSourceName, muteTiming
             variant="primary"
             href={makeAMLink('alerting/routes/mute-timing/new', alertManagerSourceName)}
           >
-            新静音计时
+            新增静默计时
           </LinkButton>
         </Authorize>
       )}
@@ -86,20 +86,20 @@ export const MuteTimingsTable: FC<Props> = ({ alertManagerSourceName, muteTiming
         <DynamicTable items={items} cols={columns} />
       ) : !hideActions ? (
         <EmptyAreaWithCTA
-          text="您还没有创建任何静音计时"
-          buttonLabel="添加静音计时"
+          text="您还没有创建任何静默计时"
+          buttonLabel="添加静默计时"
           buttonIcon="plus"
           buttonSize="lg"
           href={makeAMLink('alerting/routes/mute-timing/new', alertManagerSourceName)}
           showButton={contextSrv.hasPermission(permissions.create)}
         />
       ) : (
-        <p>没有配置静音计时</p>
+        <p>没有配置静默计时</p>
       )}
       {!hideActions && (
         <ConfirmModal
           isOpen={!!muteTimingName}
-          title="删除静音计时"
+          title="删除静默计时"
           body={`您确定要删除 "${muteTimingName}"吗`}
           confirmText="Delete"
           onConfirm={() => dispatch(deleteMuteTimingAction(alertManagerSourceName, muteTimingName))}

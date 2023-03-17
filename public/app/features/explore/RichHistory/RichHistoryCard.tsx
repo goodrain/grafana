@@ -258,7 +258,7 @@ export function RichHistoryCard(props: Props) {
   };
 
   const updateComment = (
-    <div className={styles.updateCommentContainer} aria-label={comment ? '更新评论表格' : '添加评论表格'}>
+    <div className={styles.updateCommentContainer} aria-label={comment ? '更新说明表格' : '添加说明表格'}>
       <TextArea
         value={comment}
         placeholder={comment ? undefined : '查询功能的可选描述。'}
@@ -267,7 +267,7 @@ export function RichHistoryCard(props: Props) {
       />
       <div className={styles.commentButtonRow}>
         <Button onClick={onUpdateComment} aria-label="提交按钮">
-        保存评论
+        保存说明
         </Button>
         <Button variant="secondary" onClick={onCancelUpdateComment}>
           取消
@@ -281,7 +281,7 @@ export function RichHistoryCard(props: Props) {
       <IconButton
         name="comment-alt"
         onClick={toggleActiveUpdateComment}
-        title={query.comment?.length > 0 ? '编辑评论' : '添加评论'}
+        title={query.comment?.length > 0 ? '编辑说明' : '添加说明'}
       />
       <IconButton name="copy" onClick={onCopyQuery} title="将查询复制到剪贴板" />
       {!isRemoved && (
@@ -319,7 +319,7 @@ export function RichHistoryCard(props: Props) {
             );
           })}
           {!activeUpdateComment && query.comment && (
-            <div aria-label="查询评论" className={styles.comment}>
+            <div aria-label="查询说明" className={styles.comment}>
               {query.comment}
             </div>
           )}

@@ -136,7 +136,7 @@ export const AmSpecificRouting: FC<AmSpecificRoutingProps> = ({
                 </div>
                 {(queryString || contactPoint) && (
                   <Button variant="secondary" icon="times" onClick={clearFilters} className={styles.clearFilterBtn}>
-                    清晰的过滤器
+                    清空过滤条件
                   </Button>
                 )}
               </div>
@@ -146,7 +146,7 @@ export const AmSpecificRouting: FC<AmSpecificRoutingProps> = ({
               <Authorize actions={[permissions.create]}>
                 <div className={styles.addMatcherBtnRow}>
                   <Button className={styles.addMatcherBtn} icon="plus" onClick={addNewRoute} type="button">
-                    新政策
+                    新增策略
                   </Button>
                 </div>
               </Authorize>
@@ -170,7 +170,7 @@ export const AmSpecificRouting: FC<AmSpecificRoutingProps> = ({
       ) : (
         <EmptyAreaWithCTA
           buttonIcon="plus"
-          buttonLabel="新的具体政策"
+          buttonLabel="新增特定策略"
           onButtonClick={addNewRoute}
           text="您还没有创建任何特定的策略。"
           showButton={canCreateNotifications}

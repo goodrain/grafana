@@ -47,8 +47,8 @@ export const SilencePeriod = () => {
   return (
     <Field
       className={styles.timeRange}
-      label="Silence start and end"
-      error={invalid ? 'To is before or the same as from' : ''}
+      label="静默开始和结束"
+      error={invalid ? 'To是before或与from相同' : ''}
       invalid={invalid}
     >
       <TimeRangeInput
@@ -68,7 +68,7 @@ export const SilencePeriod = () => {
         onChangeTimeZone={(newValue) => onChangeTimeZone(newValue)}
         hideTimeZone={false}
         hideQuickRanges={true}
-        placeholder={'Select time range'}
+        placeholder={'选择时间范围'}
       />
     </Field>
   );

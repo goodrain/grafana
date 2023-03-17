@@ -71,7 +71,7 @@ const SilencesTable: FC<Props> = ({ silences, alertManagerAlerts, alertManagerSo
             <div className={styles.topButtonContainer}>
               <Link href={makeAMLink('/alerting/silence/new', alertManagerSourceName)}>
                 <Button className={styles.addNewSilence} icon="plus">
-                  New Silence
+                  新增静默
                 </Button>
               </Link>
             </div>
@@ -87,12 +87,12 @@ const SilencesTable: FC<Props> = ({ silences, alertManagerAlerts, alertManagerSo
               {showExpiredSilencesBanner && (
                 <div className={styles.callout}>
                   <Icon className={styles.calloutIcon} name="info-circle" />
-                  <span>Expired silences are automatically deleted after 5 days.</span>
+                  <span>过期的静默会在5天后自动删除.</span>
                 </div>
               )}
             </>
           ) : (
-            'No matching silences found'
+            '没有发现匹配的静默'
           )}
         </>
       )}
@@ -182,7 +182,7 @@ function useColumns(alertManagerSourceName: string) {
     const columns: SilenceTableColumnProps[] = [
       {
         id: 'state',
-        label: 'State',
+        label: '状态',
         renderCell: function renderStateTag({ data: { status } }) {
           return <SilenceStateTag state={status.state} />;
         },
@@ -190,7 +190,7 @@ function useColumns(alertManagerSourceName: string) {
       },
       {
         id: 'matchers',
-        label: 'Matching labels',
+        label: '匹配标签',
         renderCell: function renderMatchers({ data: { matchers } }) {
           return <Matchers matchers={matchers || []} />;
         },
@@ -198,7 +198,7 @@ function useColumns(alertManagerSourceName: string) {
       },
       {
         id: 'alerts',
-        label: 'Alerts',
+        label: '警报',
         renderCell: function renderSilencedAlerts({ data: { silencedAlerts } }) {
           return <span data-testid="alerts">{silencedAlerts.length}</span>;
         },
@@ -206,7 +206,7 @@ function useColumns(alertManagerSourceName: string) {
       },
       {
         id: 'schedule',
-        label: 'Schedule',
+        label: '时间表',
         renderCell: function renderSchedule({ data: { startsAt, endsAt } }) {
           const startsAtDate = dateMath.parse(startsAt);
           const endsAtDate = dateMath.parse(endsAt);
@@ -226,7 +226,7 @@ function useColumns(alertManagerSourceName: string) {
     if (showActions) {
       columns.push({
         id: 'actions',
-        label: 'Actions',
+        label: '操作',
         renderCell: function renderActions({ data: silence }) {
           return (
             <Stack gap={0.5}>
@@ -236,7 +236,7 @@ function useColumns(alertManagerSourceName: string) {
                 </Link>
               ) : (
                 <ActionButton icon="bell" onClick={() => handleExpireSilenceClick(silence.id)}>
-                  Unsilence
+                  激活
                 </ActionButton>
               )}
               {silence.status.state !== 'expired' && (
@@ -244,7 +244,7 @@ function useColumns(alertManagerSourceName: string) {
                   className={styles.editButton}
                   to={makeAMLink(`/alerting/silence/${silence.id}/edit`, alertManagerSourceName)}
                   icon="pen"
-                  tooltip="edit"
+                  tooltip="编辑"
                 />
               )}
             </Stack>

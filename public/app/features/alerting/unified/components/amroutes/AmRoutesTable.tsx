@@ -92,32 +92,32 @@ export const AmRoutesTable: FC<AmRoutesTableProps> = ({
   const cols: RouteTableColumnProps[] = [
     {
       id: 'matchingCriteria',
-      label: 'Matching labels',
+      label: '匹配标签',
       // eslint-disable-next-line react/display-name
       renderCell: (item) => {
         return item.data.object_matchers.length ? (
           <Matchers matchers={item.data.object_matchers.map(matcherFieldToMatcher)} />
         ) : (
-          <span>Matches all alert instances</span>
+          <span>匹配所有警报实例</span>
         );
       },
       size: 10,
     },
     {
       id: 'groupBy',
-      label: 'Group by',
+      label: '分组',
       renderCell: (item) => (item.data.overrideGrouping && item.data.groupBy.join(', ')) || '-',
       size: 5,
     },
     {
       id: 'receiverChannel',
-      label: 'Contact point',
+      label: '联络点',
       renderCell: (item) => item.data.receiver || '-',
       size: 5,
     },
     {
       id: 'muteTimings',
-      label: 'Mute timings',
+      label: '静默时间',
       renderCell: (item) => item.data.muteTimeIntervals.join(', ') || '-',
       size: 5,
     },
@@ -126,7 +126,7 @@ export const AmRoutesTable: FC<AmRoutesTableProps> = ({
       : [
           {
             id: 'actions',
-            label: 'Actions',
+            label: '操作',
             // eslint-disable-next-line react/display-name
             renderCell: (item) => {
               if (item.renderExpandedContent) {
@@ -149,7 +149,7 @@ export const AmRoutesTable: FC<AmRoutesTableProps> = ({
                       type="button"
                       variant="secondary"
                     >
-                      Edit
+                      编辑
                     </Button>
                     <IconButton
                       aria-label="Delete route"
@@ -191,7 +191,7 @@ export const AmRoutesTable: FC<AmRoutesTableProps> = ({
   if (routes.length > 0 && filteredRoutes.length === 0) {
     return (
       <EmptyArea>
-        <p>No policies found</p>
+        <p>没有发现策略</p>
       </EmptyArea>
     );
   }
@@ -240,9 +240,9 @@ export const AmRoutesTable: FC<AmRoutesTableProps> = ({
       />
       <ConfirmModal
         isOpen={!!deletingRouteId}
-        title="Delete notification policy"
-        body="Deleting this notification policy will permanently remove it. Are you sure you want to delete this policy?"
-        confirmText="Yes, delete"
+        title="删除通知策略"
+        body="删除此通知策略将永久删除它。您确定要删除此策略吗?"
+        confirmText="确定删除"
         icon="exclamation-triangle"
         onConfirm={() => {
           if (deletingRouteId) {

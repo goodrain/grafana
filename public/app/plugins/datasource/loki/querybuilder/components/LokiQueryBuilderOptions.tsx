@@ -79,7 +79,7 @@ export const LokiQueryBuilderOptions = React.memo<Props>(({ app, query, onChange
             />
           </EditorField>
         )}
-        <EditorField label="决议">
+        <EditorField label="解析粒度">
           <Select
             isSearchable={false}
             onChange={onResolutionChange}
@@ -104,7 +104,7 @@ function getCollapsedInfo(query: LokiQuery, queryType: LokiQueryType, showMaxLin
   }
 
   if (query.resolution) {
-    items.push(`决议: ${resolutionLabel?.label}`);
+    items.push(`解析粒度: ${resolutionLabel?.label}`);
   }
 
   items.push(`类型: ${queryTypeLabel?.label}`);
