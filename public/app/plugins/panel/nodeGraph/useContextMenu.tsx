@@ -28,11 +28,11 @@ export function useContextMenu(
 
   const onNodeOpen = useCallback(
     (event: MouseEvent<SVGElement>, node: NodeDatum) => {
-      let label = 'Show in Grid layout';
+      let label = '在网格布局中显示';
       let showGridLayout = true;
 
       if (config.gridLayout) {
-        label = 'Show in Graph layout';
+        label = '拓扑图';
         showGridLayout = false;
       }
 
@@ -142,7 +142,7 @@ type LinkData<T extends NodeDatum | EdgeDatum> = {
 };
 
 function getItems(links: LinkModel[]) {
-  const defaultGroup = 'Open in Explore';
+  const defaultGroup = '在探索中打开';
   const groups = links.reduce<{ [group: string]: Array<{ l: LinkModel; newTitle?: string }> }>((acc, l) => {
     let group;
     let title;

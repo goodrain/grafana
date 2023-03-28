@@ -580,7 +580,7 @@ describe('Tempo apm table', () => {
       links: [
         {
           url: '',
-          title: 'Request rate',
+          title: '请求速率',
           internal: {
             query: {
               expr: 'sum by (client, server)(rate(traces_service_graph_request_total{client="${__data.fields.source}",server="${__data.fields.target}"}[$__rate_interval]))',
@@ -594,7 +594,7 @@ describe('Tempo apm table', () => {
         },
         {
           url: '',
-          title: 'Request histogram',
+          title: '请求直方图',
           internal: {
             query: {
               expr: 'histogram_quantile(0.9, sum(rate(traces_service_graph_request_server_seconds_bucket{client="${__data.fields.source}",server="${__data.fields.target}"}[$__rate_interval])) by (le, client, server))',
@@ -608,7 +608,7 @@ describe('Tempo apm table', () => {
         },
         {
           url: '',
-          title: 'Failed request rate',
+          title: '失败请求率',
           internal: {
             query: {
               expr: 'sum by (client, server)(rate(traces_service_graph_request_failed_total{client="${__data.fields.source}",server="${__data.fields.target}"}[$__rate_interval]))',
@@ -622,7 +622,7 @@ describe('Tempo apm table', () => {
         },
         {
           url: '',
-          title: 'View traces',
+          title: '查看 traces',
           internal: {
             query: {
               queryType: 'nativeSearch',
@@ -886,7 +886,7 @@ const mockInvalidJson = {
 const serviceGraphLinks = [
   {
     url: '',
-    title: 'Request rate',
+    title: '请求速率',
     internal: {
       query: {
         expr: 'sum by (client, server)(rate(traces_service_graph_request_total{server="${__data.fields.id}"}[$__rate_interval]))',
@@ -900,7 +900,7 @@ const serviceGraphLinks = [
   },
   {
     url: '',
-    title: 'Request histogram',
+    title: '请求直方图',
     internal: {
       query: {
         expr: 'histogram_quantile(0.9, sum(rate(traces_service_graph_request_server_seconds_bucket{server="${__data.fields.id}"}[$__rate_interval])) by (le, client, server))',
@@ -914,7 +914,7 @@ const serviceGraphLinks = [
   },
   {
     url: '',
-    title: 'Failed request rate',
+    title: '失败请求率',
     internal: {
       query: {
         expr: 'sum by (client, server)(rate(traces_service_graph_request_failed_total{server="${__data.fields.id}"}[$__rate_interval]))',
@@ -928,7 +928,7 @@ const serviceGraphLinks = [
   },
   {
     url: '',
-    title: 'View traces',
+    title: '查看 traces',
     internal: {
       query: {
         queryType: 'nativeSearch',

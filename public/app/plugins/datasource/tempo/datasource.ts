@@ -605,24 +605,24 @@ export function getFieldConfig(
   return {
     links: [
       makePromLink(
-        'Request rate',
+        '请求速率',
         `sum by (client, server)(rate(${totalsMetric}{${sourceField}server="\${${targetField}}"}[$__rate_interval]))`,
         datasourceUid,
         false
       ),
       makePromLink(
-        'Request histogram',
+        '请求直方图',
         `histogram_quantile(0.9, sum(rate(${histogramMetric}{${sourceField}server="\${${targetField}}"}[$__rate_interval])) by (le, client, server))`,
         datasourceUid,
         false
       ),
       makePromLink(
-        'Failed request rate',
+        '失败请求率',
         `sum by (client, server)(rate(${failedMetric}{${sourceField}server="\${${targetField}}"}[$__rate_interval]))`,
         datasourceUid,
         false
       ),
-      makeTempoLink('View traces', `\${${tempoField}}`, '', tempoDatasourceUid),
+      makeTempoLink('查看 traces', `\${${tempoField}}`, '', tempoDatasourceUid),
     ],
   };
 }

@@ -80,20 +80,20 @@ class TempoQueryFieldComponent extends React.PureComponent<Props> {
     const queryTypeOptions: Array<SelectableValue<TempoQueryType>> = [
       { value: 'traceId', label: 'TraceID' },
       { value: 'upload', label: 'JSON File' },
-      { value: 'serviceMap', label: 'Service Graph' },
+      { value: 'serviceMap', label: '拓扑图' },
     ];
 
     if (!datasource?.search?.hide) {
-      queryTypeOptions.unshift({ value: 'nativeSearch', label: 'Search' });
+      queryTypeOptions.unshift({ value: 'nativeSearch', label: '搜索' });
     }
 
     if (logsDatasourceUid) {
       if (datasource?.search?.hide) {
         // Place at beginning as Search if no native search
-        queryTypeOptions.unshift({ value: 'search', label: 'Search' });
+        queryTypeOptions.unshift({ value: 'search', label: '搜索' });
       } else {
         // Place at end as Loki Search if native search is enabled
-        queryTypeOptions.push({ value: 'search', label: 'Loki Search' });
+        queryTypeOptions.push({ value: 'search', label: '搜索' });
       }
     }
 
