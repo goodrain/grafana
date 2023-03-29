@@ -1,25 +1,16 @@
-import { css } from '@emotion/css';
 import React, { useEffect, useRef, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { useToggle, useWindowSize } from 'react-use';
 
-import { applyFieldOverrides, DataFrame, GrafanaTheme2, SplitOpen } from '@grafana/data';
+import { applyFieldOverrides, DataFrame, SplitOpen } from '@grafana/data';
 import { reportInteraction } from '@grafana/runtime';
-import { Badge, Collapse, useStyles2, useTheme2 } from '@grafana/ui';
+import { Collapse, useTheme2 } from '@grafana/ui';
 
 import { NodeGraph } from '../../plugins/panel/nodeGraph';
-import { useCategorizeFrames } from '../../plugins/panel/nodeGraph/useCategorizeFrames';
 import { ExploreId, StoreState } from '../../types';
 
 import { useLinks } from './utils/links';
 
-const getStyles = (theme: GrafanaTheme2) => ({
-  warningText: css`
-    label: warningText;
-    font-size: ${theme.typography.bodySmall.fontSize};
-    color: ${theme.colors.text.secondary};
-  `,
-});
 
 interface OwnProps {
   // Edges and Nodes are separate frames
@@ -37,7 +28,6 @@ export function UnconnectedNodeGraphContainer(props: Props) {
   const { dataFrames, range, splitOpenFn, withTraceView, datasourceType } = props;
   const getLinks = useLinks(range, splitOpenFn);
   const theme = useTheme2();
-  const styles = useStyles2(getStyles);
 
   // This is implicit dependency that is needed for links to work. At some point when replacing variables in the link
   // it requires field to have a display property which is added by the overrides even though we don't add any field
@@ -53,7 +43,6 @@ export function UnconnectedNodeGraphContainer(props: Props) {
     theme,
   });
 
-  const { nodes } = useCategorizeFrames(frames);
   const [open, toggleOpen] = useToggle(false);
   const toggled = () => {
     toggleOpen();
@@ -75,17 +64,12 @@ export function UnconnectedNodeGraphContainer(props: Props) {
   }, [containerRef]);
   const height = windowHeight - top - 32;
 
-  const countWarning =
-    withTraceView && nodes[0]?.length > 1000 ? (
-      <span className={styles.warningText}> ({nodes[0].length} nodes, can be slow to load)</span>
-    ) : null;
 
   return (
     <Collapse
       label={
         <span>
-          Node graph{countWarning}{' '}
-          <Badge text={'Beta'} color={'blue'} icon={'rocket'} tooltip={'This visualization is in beta'} />
+          节点拓扑
         </span>
       }
       collapsible={withTraceView}

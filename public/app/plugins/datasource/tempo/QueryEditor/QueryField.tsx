@@ -93,7 +93,7 @@ class TempoQueryFieldComponent extends React.PureComponent<Props> {
         queryTypeOptions.unshift({ value: 'search', label: '搜索' });
       } else {
         // Place at end as Loki Search if native search is enabled
-        queryTypeOptions.push({ value: 'search', label: '搜索' });
+        queryTypeOptions.push({ value: 'search', label: 'Loki 搜索' });
       }
     }
 
